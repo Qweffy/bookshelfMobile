@@ -20,8 +20,10 @@ function getStyles(kind: ButtonKind) {
 export const BookshelfButton = ({title, type}: bookshelfButtonProps) => {
   const styles = getStyles(type);
   return (
-    <TouchableOpacity style={styles}>
-      <Text>{title ? title : 'Send text to display in the button'}</Text>
-    </TouchableOpacity>
+
+  <TouchableOpacity style={styles}>
+    <Text>{title ? title : 'Send text to display in the button'}</Text>
+  </TouchableOpacity>
+
   );
-};
+}; 
