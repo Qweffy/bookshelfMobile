@@ -6,6 +6,7 @@ import { colors } from './styles/colors'
 
 export const App = () => {
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={ { backgroundColor: colors.background, flex: 1 } }>
       <Login />
       <BookshelfButton type={ 'primary' } title={ 'Login' } />
