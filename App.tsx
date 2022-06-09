@@ -1,15 +1,16 @@
-import React from 'react';
-import {Button, Text, View} from 'react-native';
-import {BookshelfButton} from './components/Buttons/BookshelfButton';
-import Login from './assets/login.svg';
+import React from 'react'
+import { Button, Text, View } from 'react-native'
+import { BookshelfButton } from './components/Buttons/BookshelfButton'
+import Login from './assets/login.svg'
+import { colors } from './styles/colors'
 
 export const App = () => {
   return (
-    <View>
-      <Text>Hola mundo</Text>
+    // eslint-disable-next-line react-native/no-inline-styles
+    <View style={ { backgroundColor: colors.background, flex: 1 } }>
       <Login />
-      <Button title={'Login'} />
-      <BookshelfButton type={'secondary'} title={'Register'} />
+      <BookshelfButton type={ 'primary' } title={ 'Login' } />
+      <BookshelfButton type={ 'secondary' } title={ 'Register' } />
     </View>
-  );
-};
+  )
+}
