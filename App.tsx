@@ -1,16 +1,30 @@
-import React from 'react'
+import * as React from 'react'
 import { Button, Text, View } from 'react-native'
 import { BookshelfButton } from './components/Buttons/BookshelfButton'
 import Login from './assets/login.svg'
 import { colors } from './styles/colors'
+import { createStackNavigator } from '@react-navigation/stack'
+import { HomeScreen } from './screens/HomeScreen'
+
+import { NavigationContainer } from '@react-navigation/native'
+import { StackNavigator } from './navigator/StackNavigator'
+
+export interface RootStackParams {
+  HomeScreen: undefined;
+  LoginScreen: undefined;
+  RegisterScreen: undefined;
+} 
+
+const Stack = createStackNavigator<RootStackParams>()
 
 export const App = () => {
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={ { backgroundColor: colors.background, flex: 1 } }>
-      <Login />
-      <BookshelfButton type={ 'primary' } title={ 'Login' } />
-      <BookshelfButton type={ 'secondary' } title={ 'Register' } />
-    </View>
+    <NavigationContainer>
+      <StackNavigator/>
+    </NavigationContainer>
+    // <View>
+    //   <Text>Caca</Text>
+    // </View>
+    
   )
 }
