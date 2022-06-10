@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-raw-text */
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-svg'
 import { BookshelfButton } from '../components/Buttons/BookshelfButton'
@@ -9,9 +9,16 @@ import { Layout } from '../components/Wrappers/Layout'
 import { Box } from '../components/Wrappers/Box'
 import { Fonts, Spacing } from '../styles/base'
 import { H } from '../components/Texts/Header'
-import Input from '../components/Inputs/InputPassword'
+import Input from '../components/Inputs'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export const HomeScreen = () => {
+   
+  const onChange = () => {
+    
+  }
+
+  const [isSecureEntry, setIsSecureEntry] = useState<boolean>(true)
   return (
     <Layout>
       <Login />
@@ -26,27 +33,26 @@ export const HomeScreen = () => {
         label="Username"
         iconPosition="right"
         placeholder="Enter Username"
-        value={ form.userName || null }
         onChangeText={ (value) => {
-          onChange({ name: 'userName', value })
+          onChange()
         } }
       />
 
       <Input
         label="Password"
         placeholder="Enter Password"
-        secureTextEntry={ isSecureEntry }
+        isSecureEntry={ true }
         icon={
           <TouchableOpacity
             onPress={ () => {
-              setIsSecureEntry((prev) => !prev)
+              setIsSecureEntry((prev: boolean) => !prev)
             } }>
             <Text>{ isSecureEntry ? 'Show' : 'Hide' }</Text>
           </TouchableOpacity>
         }
         iconPosition="right"
         onChangeText={ (value) => {
-          onChange({ name: 'password', value })
+          onChange()
         } }
       />
     </Layout>

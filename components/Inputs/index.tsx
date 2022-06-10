@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TextInput, TextStyle } from 'react-native'
-import { Colors } from '../../../styles/colors'
+import { Colors } from '../../styles/colors'
 import styles from './styles'
 
 interface InputProps {
@@ -11,6 +11,8 @@ interface InputProps {
     label?: string
     error?: boolean
     style?: TextStyle
+    placeholder?: string
+    isSecureEntry?: boolean
 }
 
 type IconPosition = "left" | "right"
@@ -23,6 +25,8 @@ const Input = ({
   label,
   error,
   style,
+  placeholder,
+  isSecureEntry,
   ...props
 }: InputProps) => {
   const [focused, setFocused] = React.useState(false)
@@ -63,7 +67,9 @@ const Input = ({
         <TextInput
           style={ [styles.textInput, style] }
           onChangeText={ onChangeText }
+          placeholder={ placeholder }
           value={ value }
+          secureTextEntry={ isSecureEntry }
           onFocus={ () => {
             setFocused(true)
           } }
