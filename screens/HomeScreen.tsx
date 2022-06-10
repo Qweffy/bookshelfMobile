@@ -1,19 +1,25 @@
+/* eslint-disable react-native/no-raw-text */
 import React from 'react'
 import { View } from "react-native"
 import { Text } from "react-native-svg"
 import { BookshelfButton } from '../components/Buttons/BookshelfButton'
 import Login from '../assets/login.svg'
-import { colors } from '../styles/colors'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Layout } from '../components/Wrappers/Layout'
+import { Box } from '../components/Wrappers/Box'
+import { Fonts, Spacing } from '../styles/base'
+import { H } from '../components/Texts/Header'
 
 export const HomeScreen = () => {
 
   return (
-
-  // eslint-disable-next-line react-native/no-inline-styles
-    <View style={ { backgroundColor: colors.background, flex: 1 } }>
+    <Layout> 
       <Login />
-      <BookshelfButton type={ 'primary' } title={ 'Login' } />
-      <BookshelfButton type={ 'secondary' } title={ 'Register' } />
-    </View> 
+      <H size={ Fonts.md } style={ { textAlign: 'center' } }>Are you ready to get into reading world?</H>
+      <Box padding={ Spacing.m }>
+        <BookshelfButton type={ 'primary' } title={ 'Login' } />
+      </Box>
+      <BookshelfButton type={ 'secondary' } title={ 'Register' } /> 
+    </Layout> 
   )
 }

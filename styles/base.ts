@@ -5,21 +5,17 @@ export const dimensions = {
   fullWidth: Dimensions.get('window').width,
 }
 
-// export const colors = {
-//   primary: '#226B74',
-//   secondary: '#254B5A',
-// };
-
-export const padding = {
-  sm: 10,
-  md: 20,
-  lg: 30, 
-  xl: 40,
+export enum Spacing {
+  xs = 8,
+  s = 12,
+  m = 20, 
+  l = 34,
+  xl = 54,
 }
 
-export const fonts = {
-  sm: 12,
-  md: 18,
-  lg: 28,
-  primary: 'Cochin',
+export enum Fonts {
+  sm = 12,
+  md = 18,
+  lg = 28,
+  // primary = 'Cochin',
 }

@@ -8,6 +8,7 @@ import { HomeScreen } from './screens/HomeScreen'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { StackNavigator } from './navigator/StackNavigator'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export interface RootStackParams {
   HomeScreen: undefined;
@@ -19,12 +20,10 @@ const Stack = createStackNavigator<RootStackParams>()
 
 export const App = () => {
   return (
-    <NavigationContainer>
-      <StackNavigator/>
-    </NavigationContainer>
-    // <View>
-    //   <Text>Caca</Text>
-    // </View>
-    
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StackNavigator/>
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
 }
