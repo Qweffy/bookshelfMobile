@@ -8,7 +8,6 @@ interface InputProps {
     iconPosition: IconPosition
     value?: string
     icon?: JSX.Element
-    label?: string
     error?: boolean
     style?: TextStyle
     placeholder?: string
@@ -22,7 +21,6 @@ const Input = ({
   iconPosition,
   icon,
   value,
-  label,
   error,
   style,
   placeholder,
@@ -47,15 +45,13 @@ const Input = ({
     }
 
     if (focused) {
-      return Colors.font
-    } else {
       return Colors.gradientPrimaryOne
+    } else {
+      return Colors.darkBlue
     }
   }
   return (
     <View style={ styles.inputContainer }>
-      { label && <Text>{ label }</Text> }
-
       <View
         style={ [
           styles.wrapper,
@@ -69,6 +65,7 @@ const Input = ({
           onChangeText={ onChangeText }
           placeholder={ placeholder }
           value={ value }
+          placeholderTextColor={ Colors.font }
           secureTextEntry={ isSecureEntry }
           onFocus={ () => {
             setFocused(true)

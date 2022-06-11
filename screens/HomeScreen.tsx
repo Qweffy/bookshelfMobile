@@ -11,6 +11,10 @@ import { Fonts, Spacing } from '../styles/base'
 import { H } from '../components/Texts/Header'
 import Input from '../components/Inputs'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons'
+import { Logout } from '../components/Logout'
+import { Tab } from '../components/Tab'
 
 export const HomeScreen = () => {
    
@@ -21,40 +25,7 @@ export const HomeScreen = () => {
   const [isSecureEntry, setIsSecureEntry] = useState<boolean>(true)
   return (
     <Layout>
-      <Login />
-      <H size={ Fonts.md } style={ { textAlign: 'center' } }>
-        Are you ready to get into reading world?
-      </H>
-      <Box padding={ Spacing.m }>
-        <BookshelfButton type={ 'primary' } title={ 'Login' } />
-      </Box>
-      <BookshelfButton type={ 'secondary' } title={ 'Register' } />
-      <Input
-        label="Username"
-        iconPosition="right"
-        placeholder="Enter Username"
-        onChangeText={ (value) => {
-          onChange()
-        } }
-      />
-
-      <Input
-        label="Password"
-        placeholder="Enter Password"
-        isSecureEntry={ true }
-        icon={
-          <TouchableOpacity
-            onPress={ () => {
-              setIsSecureEntry((prev: boolean) => !prev)
-            } }>
-            <Text>{ isSecureEntry ? 'Show' : 'Hide' }</Text>
-          </TouchableOpacity>
-        }
-        iconPosition="right"
-        onChangeText={ (value) => {
-          onChange()
-        } }
-      />
+      <Tab/>
     </Layout>
   )
 }
