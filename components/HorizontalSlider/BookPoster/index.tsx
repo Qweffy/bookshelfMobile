@@ -35,6 +35,8 @@ export enum OriginalLanguage {
 export const MoviePoster = ({ movie, height = 420, width = 300, onPress }: Props ) => {
 
   const uri = movie.volumeInfo.imageLinks.thumbnail
+
+  console.log('uri q funciona', uri)
   const navigation = useNavigation() 
 
   return (

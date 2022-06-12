@@ -9,7 +9,7 @@ export interface RootStackParams {
   HomeScreen: undefined;
   LoginScreen: undefined;
   RegisterScreen: undefined; 
-  MainScreen: undefined;
+  MainScreen: undefined
 }
 
 const Stack = createStackNavigator<RootStackParams>()
@@ -19,7 +19,7 @@ export const StackNavigator = () => {
     <Stack.Navigator screenOptions={ {
       headerShown: false,
     } }>
-      <Stack.Screen name="HomeScreen" component={ HomeScreen } />
+      <Stack.Screen name="MainScreen" component={ MainScreen } />
     </Stack.Navigator>
   )
 } 
