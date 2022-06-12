@@ -1,19 +1,38 @@
-import React from 'react'
-import { View } from "react-native"
-import { Text } from "react-native-svg"
+/* eslint-disable react-native/no-raw-text */
+import React, { useEffect, useState } from 'react'
+import { View } from 'react-native'
+import { Text } from 'react-native-svg'
 import { BookshelfButton } from '../components/Buttons/BookshelfButton'
 import Login from '../assets/login.svg'
-import { colors } from '../styles/colors'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Layout } from '../components/Wrappers/Layout'
+import { Box } from '../components/Wrappers/Box'
+import { Fonts, Spacing } from '../styles/base'
+import { H } from '../components/Texts/Header'
+import Input from '../components/Inputs'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons'
+import { Logout } from '../components/Logout'
+import { Tab } from '../components/Tab'
+import { HorizontalSlider } from '../components/HorizontalSlider'
+import axios from 'axios'
 
 export const HomeScreen = () => {
 
-  return (
+  const [response, setResponse] = useState()
 
-  // eslint-disable-next-line react-native/no-inline-styles
-    <View style={ { backgroundColor: colors.background, flex: 1 } }>
-      <Login />
-      <BookshelfButton type={ 'primary' } title={ 'Login' } />
-      <BookshelfButton type={ 'secondary' } title={ 'Register' } />
-    </View> 
+  useEffect(() => {
+    axios.get("https://www.googleapis.com/books/v1/volumes?q=javascript:keyes&key=AIzaSyBqdKbsgfYO5uB5z-51C2QgDthKGHSl-mQ").then( data =>{
+      setResponse(data.data.items)
+    })
+  },[])
+
+  const [isSecureEntry, setIsSecureEntry] = useState<boolean>(true)
+  return (
+    <Layout>
+      <Tab/>
+      <HorizontalSlider movies={ response }/>  
+    </Layout>
   )
 }

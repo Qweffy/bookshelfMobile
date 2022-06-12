@@ -1,11 +1,11 @@
-import { dimensions, padding } from '../../../styles/base'
+import { dimensions, Spacing } from '../../../styles/base'
 import { StyleSheet } from 'react-native'
-import { colors } from '../../../styles/colors'
+import { Colors } from '../../../styles/colors'
 
 export const bookshelfButtonStyles = StyleSheet.create({
   primary: {
-    paddingHorizontal: padding.sm,
-    paddingVertical: padding.lg,
+    paddingHorizontal: Spacing.s,
+    paddingVertical: Spacing.l,
     width: dimensions.fullWidth,
   },
   secondary: {
@@ -32,18 +32,18 @@ export const bookshelfButtonStyles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     width: '99%',
     margin: 1
   },
   buttonTextPrimary: {
     textAlign: 'center',
-    color: colors.font,
+    color: Colors.font,
     alignSelf: 'center',
   },
   buttonTextSecondary: {
     textAlign: 'center',
-    color: colors.fontSecondary,
+    color: Colors.fontSecondary,
     alignSelf: 'center',
   },
 

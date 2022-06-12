@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { colors } from '../../../styles/colors'
+import { Colors } from '../../../styles/colors'
 import { bookshelfButtonStyles } from './style'
 
 interface BookshelfButtonProps {
@@ -14,7 +14,7 @@ const Primary = ( { title } :BookshelfButtonProps) => {
   return (
     <>
       <LinearGradient
-        colors={ [colors.gradientPrimaryOne, colors.gradientPrimaryTwo] }
+        colors={ [Colors.gradientPrimaryOne, Colors.gradientPrimaryTwo] }
         start={ { x: 0.0, y: 1.0 } } end={ { x: 1.0, y: 1.0 } }
         style={ bookshelfButtonStyles.grediant }
       >
@@ -34,7 +34,7 @@ const Secondary = ({ title } :BookshelfButtonProps) => {
   return (
     <>
       <LinearGradient
-        colors={ [colors.gradientPrimaryOne, colors.gradientPrimaryTwo] }
+        colors={ [Colors.gradientPrimaryOne, Colors.gradientPrimaryTwo] }
         start={ { x: 0.0, y: 1.0 } } end={ { x: 1.0, y: 1.0 } }
         style={ bookshelfButtonStyles.grediant }
       >
