@@ -17,8 +17,9 @@ import { Logout } from '../components/Logout'
 import { Tab } from '../components/Tab'
 import { HorizontalSlider } from '../components/HorizontalSlider'
 import axios from 'axios'
+import { BookDetails } from '../components/BookDetails/BookDetails'
 
-export const HomeScreen = () => {
+export const MainScreen = () => {
 
   const [response, setResponse] = useState()
 
@@ -27,12 +28,13 @@ export const HomeScreen = () => {
       setResponse(data.data.items)
     })
   },[])
+  console.log('response')
 
   const [isSecureEntry, setIsSecureEntry] = useState<boolean>(true)
   return (
     <Layout>
       <Tab/>
-      <HorizontalSlider movies={ response }/>  
+      <HorizontalSlider movies={ response }/> 
     </Layout>
   )
 }
