@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Paragraph } from "../components/Texts"
 import { Layout } from "../components/Wrappers/Layout"
 import Login from '../assets/Login.svg'
@@ -9,6 +9,10 @@ import Input from '../components/Inputs'
 import { Platform, KeyboardAvoidingView, Keyboard } from 'react-native'
 import { useForm } from '../hooks/useForm'
 import { StackScreenProps } from '@react-navigation/stack'
+import { useDispatch, useSelector } from 'react-redux'
+import booksDB from '../api/booksDB'
+import { LoginData } from '../interfaces/appInterfaces'
+import { login, reset } from '../redux/features/auth/authSlice'
 
 interface Props extends StackScreenProps<any,any>{}
 
@@ -19,11 +23,22 @@ export const LoginScreen = ({ navigation }: Props) => {
     password: '',
   })
 
+  const { isError,isLoading,isSuccess } = useSelector((state) => state.reducer.auth)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+
+    if (isSuccess) {
+      Keyboard.dismiss()
+      navigation.navigate('MainScreen')
+    }
+
+    dispatch(reset())
+  }, [isSuccess, navigation, dispatch])
+  
   const onLogin = () => {
-    console.log(email,password)
-    Keyboard.dismiss()
-    navigation.navigate('RegisterScreen')
-  }
+    dispatch(login({ correo: email, password }))
+  } 
  
   return (
     <>

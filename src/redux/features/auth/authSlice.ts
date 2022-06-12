@@ -1,50 +1,87 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { Usuario } from '../../../interfaces/appInterfaces'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { LoginData } from '../../../interfaces/appInterfaces'
 import authService from './authService'
 
-interface AuthSliceProps {
-  errorMessage: string;
-  token: string | null;
-  user: Usuario | null;
-  status: 'checking' | 'authenticated' | 'not-authenticated';
-  // signUp: ( registerData: RegisterData ) => void;
-  // signIn: ( loginData: LoginData ) => void;
-  // logOut: () => void;
-  // removeError: () => void;
-}
+// Get user from localStorage
+// const user = null
 
 const initialState = {
-  user: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: '',
 }
 
+// Register user
 export const register = createAsyncThunk(
   'auth/register',
-  async (user, thunkAPI) => {
+  async ({ correo: email, password } :LoginData, thunkAPI) => {
     try {
-      await authService.register(user)
+      return await authService.signIn(correo, password)
     } catch (error) {
-      const message = (error.response?.data?.message) || error.message || error.toString()
-      return thunkAPI.rejectWithValue(message)
+      console.log('error',error)
+      return thunkAPI.rejectWithValue(error)
     }
-  }, 
+  } 
 )
+
+// Login user
+export const login = createAsyncThunk('auth/login', async ({ correo, password }, thunkAPI) => {
+  try {
+    const response = await authService.signIn({ correo, password })
+    return response
+  } catch(error) {
+    console.log('loginerrorSlice',error)
+
+  }
+  
+})
+
+export const logout = createAsyncThunk('auth/logout', async () => {
+  await authService.logout()
+})
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    reset: state => {
+    reset: (state) => {
       state.isLoading = false
-      state.isError = false
       state.isSuccess = false
-      state.message = ''
+      state.isError = false
     },
   },
-  extraReducers: () => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        // state.user = action.payload
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        // state.user = null
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        // state.user = action.payload
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        // state.user = null
+      })
+      .addCase(logout.fulfilled, (state) => {
+        // state.user = null
+      })
+  },
 })
 
 export const { reset } = authSlice.actions
