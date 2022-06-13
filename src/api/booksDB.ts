@@ -1,10 +1,18 @@
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const booksDB = axios.create({
-  baseURL: 'https://www.googleapis.com/books/v1/volumes',
-  params: {
-    api_key: 'AIzaSyBqdKbsgfYO5uB5z-51C2QgDthKGHSl-mQ',
+const baseURL = 'http://192.168.0.98:8080/api'
+
+const booksDB = axios.create({ baseURL })
+
+booksDB.interceptors.request.use(
+  async(config) => {
+    const token = await AsyncStorage.getItem('token')
+    if ( token ) {
+      config.headers['x-token'] = token
+    }
+    return config
   }
-})
+)
 
 export default booksDB
