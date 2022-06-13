@@ -8,6 +8,12 @@ export interface LoginData {
     password: string;
 }
 
+export interface RegisterData {
+    nombre: string;
+    correo: string;
+
+}
+
 export interface Usuario {
     rol:    string;
     nombre: string;

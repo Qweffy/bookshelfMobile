@@ -11,8 +11,6 @@ export interface RootStackParams {
   RegisterScreen: undefined;
 } 
 
-const Stack = createStackNavigator<RootStackParams>()
-
 export const App = () => {
   return (
 

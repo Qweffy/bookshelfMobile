@@ -11,7 +11,7 @@ import { useForm } from '../hooks/useForm'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useDispatch, useSelector } from 'react-redux'
 import booksDB from '../api/booksDB'
-import { LoginData } from '../interfaces/appInterfaces'
+import { LoginData, LoginResponse } from '../interfaces/appInterfaces'
 import { login, reset } from '../redux/features/auth/authSlice'
 
 interface Props extends StackScreenProps<any,any>{}
@@ -25,7 +25,6 @@ export const LoginScreen = ({ navigation }: Props) => {
 
   const { isError,isLoading,isSuccess } = useSelector((state) => state.reducer.auth)
   const dispatch = useDispatch()
-
   useEffect(() => {
 
     if (isSuccess) {

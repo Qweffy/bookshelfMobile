@@ -7,6 +7,7 @@ import axios from 'axios'
 import { BookDetails } from '../components/BookDetails/BookDetails'
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { ActionButton } from '../components/Buttons/ActionButton'
+import { Logout } from '../components/Logout'
 
 export const MainScreen = () => {
 
@@ -31,6 +32,7 @@ export const MainScreen = () => {
   const [isSecureEntry, setIsSecureEntry] = useState<boolean>(true)
   return (
     <Layout>
+      <Logout/>
       <Tab/>
       <HorizontalSlider movies={ response }/>
       <ActionButton text={ 'Add to List' } icon={ faSquarePlus } /> 
