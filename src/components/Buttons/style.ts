@@ -1,4 +1,4 @@
-import { dimensions, Spacing } from '../../styles/base'
+import { dimensions, Fonts, Spacing } from '../../styles/base'
 import { StyleSheet } from 'react-native'
 import { Colors } from '../../styles/colors'
 
@@ -21,7 +21,7 @@ export const bookshelfButtonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   grediant: {
-    height: 44,
+    height: 50,
     width: '100%',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -40,11 +40,13 @@ export const bookshelfButtonStyles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.font,
     alignSelf: 'center',
+    fontSize: Fonts.md
   },
   buttonTextSecondary: {
     textAlign: 'center',
     color: Colors.fontSecondary,
     alignSelf: 'center',
+    fontSize: Fonts.md
   },
 
 })  

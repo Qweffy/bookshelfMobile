@@ -19,6 +19,7 @@ export const HomeScreen = ({ navigation }: Props) => {
       <Box padding={ Spacing.l }>
         <Paragraph size={ Fonts.md } text={ 'Are you ready to get into reading world?' }/>
       </Box>
+      <Box padding={ Spacing.l }/>
       <BookshelfButton onSubmit={ () => {navigation.navigate('LoginScreen')} } type='primary' title='Login' />
       <Box padding={ Spacing.s }/>
       <BookshelfButton onSubmit={ () => {navigation.navigate('RegisterScreen')} } type='secondary' title='Register' />
