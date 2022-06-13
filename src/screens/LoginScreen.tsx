@@ -23,7 +23,7 @@ export const LoginScreen = ({ navigation }: Props) => {
     password: '',
   })
 
-  const { isError,isLoading,isSuccess } = useSelector((state) => state.reducer.auth)
+  const { isSuccess } = useSelector((state) => state.reducer.auth)
   const dispatch = useDispatch()
   useEffect(() => {
 
