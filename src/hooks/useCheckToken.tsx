@@ -6,7 +6,6 @@ export const useCheckToken =  () => {
 
   useEffect(() => {
     AsyncStorage.getItem('token').then((data) => {
-      console.log('asyncCacaToken',token)
       setToken(data)
     })
     

@@ -8,6 +8,7 @@ import { BookDetails } from '../components/BookDetails/BookDetails'
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { ActionButton } from '../components/Buttons/ActionButton'
 import { Logout } from '../components/Logout'
+import { Paragraph } from '../components/Texts'
 
 export const MainScreen = () => {
 
@@ -34,9 +35,9 @@ export const MainScreen = () => {
     <Layout>
       <Logout/>
       <Tab/>
-      <HorizontalSlider movies={ response }/>
-      <ActionButton text={ 'Add to List' } icon={ faSquarePlus } /> 
-      <BookDetails movieFull={ volumeInfo }/>
+      { /* <HorizontalSlider movies={ response }/>
+      <BookDetails movieFull={ volumeInfo }/> */ }
+
     </Layout>
   )
 }
