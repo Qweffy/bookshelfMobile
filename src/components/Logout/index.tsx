@@ -27,10 +27,10 @@ export const Logout = ({ style, padding = 0, margin = 0, backgroundColor = Color
 
   return (
     <View style={ { flexDirection: 'row' } }>
-      <FontAwesomeIcon style={ { alignSelf: 'center', marginRight: 5 } } icon={ faUser } color={ Colors.font }/>
+      <FontAwesomeIcon style={ { alignSelf: 'center' } } icon={ faUser } color={ Colors.font }/>
       <Paragraph text={ 'Josefinapiaggio' } size={ Fonts.md }/>
       <TouchableOpacity onPress={ signOut } >
-        <FontAwesomeIcon style={ { marginLeft: 'auto' } } icon={ faShareFromSquare } color={ Colors.font }/>
+        <FontAwesomeIcon  icon={ faShareFromSquare } color={ Colors.font }/>
       </TouchableOpacity>
     </View>
   )}
